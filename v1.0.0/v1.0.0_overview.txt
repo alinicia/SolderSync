@@ -1,0 +1,47 @@
+Includes the Initial Schematics
+
+* Autodesk Fusion 360
+* Currently not enough GPIOs to run old buttons
+* Thermocouple MAX31855
+* No SD-Card Support
+* No complete PCB
+* C19 on schematics currently does not have a value
+* Schematics are global, no PCB exclusive version
+
+////////////////////////////////////////////////////////////////////////
+PIN CONFIG
+
+TFT LCD            ESP32_Dev
+Base config, no touchscreen
+Vcc                3V3
+GND                GND
+LED                3V3
+MOS                D23
+SCK                D18
+CS                 D15
+RESET              D4
+DC                 D2
+MISO               D19
+
+Touchscreen config
+T_DO               D19/MISO
+T_DIN              D23/MOSI
+T_CS               D21
+T_CLK              D18/SCK
+T_IRQ              N/A
+
+
+THERMOCOUPLES      ESP32_Dev
+DO                 D26
+SCK                D27
+CS1                D14
+CS2                D25
+CS3                D33
+CS4                D32
+VCC                3v3 
+GND                GND
+
+
+RELAY              ESP32_Dev
+40A                D13
+10A                D35
