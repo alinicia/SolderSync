@@ -1,5 +1,4 @@
-Includes the Initial Schematics
-
+* Initial Schematics
 * Autodesk Fusion 360
 * Currently not enough GPIOs to run old buttons
 * Thermocouple MAX31855
