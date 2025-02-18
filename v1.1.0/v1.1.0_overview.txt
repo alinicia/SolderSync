@@ -1,0 +1,76 @@
+* Modified Initial Schematics
+* Autodesk Fusion 360
+
+* Complete Main PCB and Power PCB
+* PCB specific schematics
+
+* Currently not enough GPIOs to run old buttons
+* No SD-Card Support
+
+MAIN PCB
+* Thermocouple Amplifier MAX6675 
+      - Current footprint is too small, possibly for the obsolete version of this part
+      - Notch is needed on the footprint to identify orientation
+* Diodes at IO2, HEAT, FAN and 3V3
+      - Notch is needed on the footprint to identify orientation
+* CP2102 USB/UART Bridge
+      - Notch is needed on the footprint to identify orientation
+* JST Connectors
+      - Power Board
+      - LCD Screen, need to separate 9P connector into two with smaller pin number
+      - LCD Touch
+      - SD Card, currently not implemented
+* Screw Mounts
+* 
+* 
+* 
+* 
+* 
+* 
+
+PB - replace 805 100u capacitor with a through hole for 100u capacitor
+PB - replace 12/5 Voltage regulator with different model (LM2575??)
+PB - possibly move connectors to the outside of the board
+
+MB - order 4179, or replace with JST
+MB - separate JST 9PIN LCD to 5+4 or other combo
+
+
+
+////////////////////////////////////////////////////////////////////////
+PIN CONFIG
+
+TFT LCD            ESP32_Dev
+Base config, no touchscreen
+Vcc                3V3
+GND                GND
+LED                3V3
+MOS                D23
+SCK                D18
+CS                 D15
+RESET              D4
+DC                 D2
+MISO               D19
+
+Touchscreen config
+T_DO               D19/MISO
+T_DIN              D23/MOSI
+T_CS               D21
+T_CLK              D18/SCK
+T_IRQ              N/A
+
+
+THERMOCOUPLES      ESP32_Dev
+DO                 D26
+SCK                D27
+CS1                D14
+CS2                D25
+CS3                D33
+CS4                D32
+VCC                3v3 
+GND                GND
+
+
+RELAY              ESP32_Dev
+40A                D13
+10A                D35
