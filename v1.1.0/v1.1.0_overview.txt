@@ -57,11 +57,11 @@ POWER PCB
 
 * 2.54" for connectors
 * Ground pour isolation 20mil
-* Trace width 20mil
+* Trace width 40mil
 
 
 ////////////////////////////////////////////////////////////////////////
-PIN CONFIG
+PIN CONFIG OUTDATED
 
 TFT LCD            ESP32_Dev
 Base config, no touchscreen
