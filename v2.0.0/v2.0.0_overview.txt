@@ -1,1 +1,99 @@
+* Modified Initial Schematics
+* Autodesk Fusion 360
 
+* Complete Main PCB, Power PCB, USB/UART PCB
+* PCB specific schematics
+
+* Currently not enough GPIOs to run old buttons
+* No SD-Card Support
+
+
+MAIN PCB
+* Thermocouple Amplifier MAX6675 
+      - Current footprint is too small, possibly for the obsolete version of this part
+      - Notch is needed on the footprint to identify orientation
+
+* Diodes at IO2, HEAT, FAN and 3V3
+      - Notch is needed on the footprint to identify orientation
+
+* CP2102 USB/UART Bridge
+      - Notch is needed on the footprint to identify orientation
+
+* JST Connectors
+      - Power Board
+      - LCD Screen, need to separate 9P connector into two with smaller pin number
+      - LCD Touch
+      - SD Card, currently not implemented
+      - E-Fan
+
+* Screw Mounts for thermocouple probes
+
+* 41791 Connectors for HEAT and FAN
+      - Replace with JST Possibly
+
+* Through Hole Buttons for BOOT and EN
+
+* ESP-WROOM-32
+* 0805 CAP/RES
+* 2.54" for connectors
+* USB-A
+* Ground pour isolation 20mil
+* Trace width 20mil
+
+
+POWER PCB
+* Linear voltage regulators 12/5 and 5/3v3 - LM1117
+      - Need to eplace 12/5 with switching regulator if size is acceptable, LM2575 possibly
+
+* 9VAC/12VDC voltage rectifier usin 1n4007
+
+* JST Connectors
+      - AC supply
+      - Main PCB
+      - Need to move them on the edge of the board
+
+* 0805 CAP/RES
+      - Need to replace 0805 - 100uF capacitor with a through hole footprint
+
+* 2.54" for connectors
+* Ground pour isolation 20mil
+* Trace width 40mil
+
+
+////////////////////////////////////////////////////////////////////////
+PIN CONFIG OUTDATED
+
+TFT LCD            ESP32_Dev
+Base config, no touchscreen
+Vcc                3V3
+GND                GND
+LED                3V3
+MOS                D23
+SCK                D18
+CS                 D15
+RESET              D4
+DC                 D2
+MISO               D19
+
+Touchscreen config
+T_DO               D19/MISO
+T_DIN              D23/MOSI
+T_CS               D21
+T_CLK              D18/SCK
+T_IRQ              N/A
+
+
+THERMOCOUPLES      ESP32_Dev
+DO                 D26
+SCK                D27
+CS1                D14
+CS2                D25
+CS3                D33
+CS4                D32
+VCC                3v3 
+GND                GND
+
+
+RELAY              ESP32_Dev
+40A                D13
+10A                D35
