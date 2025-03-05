@@ -45,7 +45,7 @@ POWER PCB
 * Linear voltage regulators 12/5 and 5/3v3 - LM1117
       - Need to eplace 12/5 with switching regulator if size is acceptable, LM2575 possibly
 
-* 9VAC/12VDC voltage converter
+* 9VAC/12VDC voltage rectifier usin 1n4007
 
 * JST Connectors
       - AC supply
