@@ -87,19 +87,19 @@ USB/UART PCB
 
 
 ////////////////////////////////////////////////////////////////////////
-PIN CONFIG OUTDATED
+PIN CONFIG
 
 TFT LCD            ESP32_Dev
 Base config, no touchscreen
-Vcc                3V3
-GND                GND
-LED                3V3
-MOS                D23
-SCK                D18
-CS                 D15
-RESET              D4
-DC                 D2
 MISO               D19
+LED                3V3
+SCK                D18
+MOSI               D23
+DC                 D2
+RESET              D4
+CS                 D15
+GND                GND
+Vcc                3V3
 
 Touchscreen config
 T_DO               D19/MISO
@@ -110,13 +110,13 @@ T_IRQ              N/A
 
 
 THERMOCOUPLES      ESP32_Dev
-DO                 D26
+D0/MISO            D26
 SCK                D27
 CS1                D14
 CS2                D25
 CS3                D33
 CS4                D32
-VCC                3v3 
+VCC                3V3 
 GND                GND
 
 
