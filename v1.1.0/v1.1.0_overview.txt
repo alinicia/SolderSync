@@ -8,16 +8,31 @@
 * No SD-Card Support
 
 
+Current configuration and related issues
+
 MAIN PCB
+* BOOT/EN buttons
+      - D0/IO0 ie PIN25 is not connected to the BOOT button
+
+* Heater/Fan SSR
+      - Fan is at D34/IO34, which is input only, needs to be moved to D22/IO22
+
+* Buttons on casing
+      - Need to add buttons, IO4, IO35, IO34, and connect two more to BOOT and EN
+
+* Need to add Buzzer at D5/IO5
+
 * Thermocouple Amplifier MAX6675 
       - Current footprint is too small, possibly for the obsolete version of this part
       - Notch is needed on the footprint to identify orientation
 
 * Diodes at IO2, HEAT, FAN and 3V3
-      - Notch is needed on the footprint to identify orientation
+      - Need to add LEDs at power traces for easier trouble shooting, sign them
 
 * CP2102 USB/UART Bridge
       - Notch is needed on the footprint to identify orientation
+      - Pad of the CP2102 was ungrounded which prevented it from properly functioning, need to ground the pad
+      - Need to separate USB/UART into a separate board for easier troubleshooting/replacement
 
 * JST Connectors
       - Power Board
@@ -25,11 +40,14 @@ MAIN PCB
       - LCD Touch
       - SD Card, currently not implemented
       - E-Fan
+      - Need 3P JST to transfer 5V if supplied by the USB connection
+      - Need JST for the original LEDs of the oven
+      - Need to sign all connector pins for easy wiring
 
 * Screw Mounts for thermocouple probes
 
 * 41791 Connectors for HEAT and FAN
-      - Replace with JST Possibly
+      - Need to replace with JST
 
 * Through Hole Buttons for BOOT and EN
 
@@ -51,6 +69,10 @@ POWER PCB
       - AC supply
       - Main PCB
       - Need to move them on the edge of the board
+      - Need 3P JST to receive 5V from the USB
+
+* Switch
+      - Currently 5V trace is shared between AC supply and USB connection, need to add a switch to only use one at a time
 
 * 0805 CAP/RES
       - Need to replace 0805 - 100uF capacitor with a through hole footprint
@@ -58,6 +80,10 @@ POWER PCB
 * 2.54" for connectors
 * Ground pour isolation 20mil
 * Trace width 40mil
+
+
+USB/UART PCB
+-Needs to be built
 
 
 ////////////////////////////////////////////////////////////////////////
