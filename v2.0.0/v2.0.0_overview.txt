@@ -1,56 +1,66 @@
+
 * Modified Initial Schematics
 * Autodesk Fusion 360
 
-* Complete Main PCB, Power PCB, USB/UART PCB
+* Complete Main PCB and Power PCB and USB/UART PCB
 * PCB specific schematics
+* Attempted SD Card Support
 
-* Currently not enough GPIOs to run old buttons
-* No SD-Card Support
 
+Current configuration and related issues
 
 MAIN PCB
+* BOOT/EN buttons
+      - D0/IO0 connected to the BOOT button
+      - Through hole buttons on the PCB
+
+* Heater/Fan SSR
+      - Fan is at D34/IO34 moved to D22/IO22
+
+* Buttons on casing connected to IO4, IO35, IO34, BOOT and EN
+* Buzzer at D5/IO5
+* Diodes at IO2, HEAT, FAN, 12V, 5V, 3V3; all signed on the silkscreen
+
 * Thermocouple Amplifier MAX6675 
-      - Current footprint is too small, possibly for the obsolete version of this part
-      - Notch is needed on the footprint to identify orientation
-
-* Diodes at IO2, HEAT, FAN and 3V3
-      - Notch is needed on the footprint to identify orientation
-
-* CP2102 USB/UART Bridge
-      - Notch is needed on the footprint to identify orientation
+      - Fixed the footprint
+      - Made orientation notch visible
 
 * JST Connectors
       - Power Board
-      - LCD Screen, need to separate 9P connector into two with smaller pin number
+      - LCD Screen
       - LCD Touch
       - SD Card, currently not implemented
       - E-Fan
+      - 5V USB to Power Board
+      - Original LEDs of the oven
+      - All the pins signed
+      - Need to add another connector at 12V for second E-Fan
 
 * Screw Mounts for thermocouple probes
-
-* 41791 Connectors for HEAT and FAN
-      - Replace with JST Possibly
-
-* Through Hole Buttons for BOOT and EN
 
 * ESP-WROOM-32
 * 0805 CAP/RES
 * 2.54" for connectors
-* USB-A
 * Ground pour isolation 20mil
-* Trace width 20mil
+* Trace width 24mil
 
 
 POWER PCB
-* Linear voltage regulators 12/5 and 5/3v3 - LM1117
-      - Need to eplace 12/5 with switching regulator if size is acceptable, LM2575 possibly
+* Linear voltage regulator 5/3v3 - LM1117
+* Switching voltage regulator 12/5 - LM2575
+      - Need to replace with LM2575 for higher current ceiling
 
 * 9VAC/12VDC voltage rectifier usin 1n4007
 
 * JST Connectors
       - AC supply
       - Main PCB
+      - Main PCB 5V from USB/UART
       - Need to move them on the edge of the board
+      - Need 3P JST to receive 5V from the USB
+
+* Switch
+      - Currently 5V trace is shared between AC supply and USB connection, need to add a switch to only use one at a time
 
 * 0805 CAP/RES
       - Need to replace 0805 - 100uF capacitor with a through hole footprint
@@ -60,20 +70,28 @@ POWER PCB
 * Trace width 40mil
 
 
+USB/UART PCB
+-Needs to be built
+* CP2102 USB/UART Bridge
+      - Notch is needed on the footprint to identify orientation
+      - Pad of the CP2102 was ungrounded which prevented it from properly functioning, need to ground the pad
+      - Need to separate USB/UART into a separate board for easier troubleshooting/replacement
+
+
 ////////////////////////////////////////////////////////////////////////
 PIN CONFIG OUTDATED
 
 TFT LCD            ESP32_Dev
 Base config, no touchscreen
-Vcc                3V3
-GND                GND
-LED                3V3
-MOS                D23
-SCK                D18
-CS                 D15
-RESET              D4
-DC                 D2
 MISO               D19
+LED                3V3
+SCK                D18
+MOSI               D23
+DC                 D2
+RESET              D4
+CS                 D15
+GND                GND
+Vcc                3V3
 
 Touchscreen config
 T_DO               D19/MISO
@@ -84,13 +102,13 @@ T_IRQ              N/A
 
 
 THERMOCOUPLES      ESP32_Dev
-DO                 D26
+D0/MISO            D26
 SCK                D27
 CS1                D14
 CS2                D25
 CS3                D33
 CS4                D32
-VCC                3v3 
+VCC                3V3 
 GND                GND
 
 
